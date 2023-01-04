@@ -1,0 +1,10 @@
+
+**** Log file opened at 2022-08-14 19:55:10.009462 UTC+05:00 (Pakistan Standard Time), Encoding UTF-8
+NW RFC Library: SDK variant, Release 750 Patch Level 7, Compiled on Sep 19 2020 01:34:20
+ CPIC library: 753.2020.09.14 version 3, NI library: 40, Kernel Release: 753 Patch Level 711
+ Current working directory: O:\Work\DistrictPlayGroundManagementSystem\DistrictPlayGroundManagementSystem\Report, Program: crw64
+ Hardware: PC with Windows NT 4x AMD64 Level 6 (Mod 142 Step 9), Operating_system: Windows NT 10.0
+ Hostname: MUSTAFA, IP address: 192.168.56.1, IPv6 address: fe80::5575:1849:a1e3:b0dd
+
+2022-08-14 19:55:10.129362 [18864] >> Info entry
+	Did not find config file O:\Work\DistrictPlayGroundManagementSystem\DistrictPlayGroundManagementSystem\Report\sapnwrfc.ini.

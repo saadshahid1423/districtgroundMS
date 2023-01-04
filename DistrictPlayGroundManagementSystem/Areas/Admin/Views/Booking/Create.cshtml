@@ -1,0 +1,117 @@
+﻿@model DistrictPlayGroundManagementSystem.Booking
+
+@using (Html.BeginForm("Create", "Booking", FormMethod.Post, new { enctype = "multipart/form-data", id = "Areaform", area = "Admin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <h4>Booking</h4>
+                        <small>Add Booking Here</small>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger text-center" id="divMessage" style="display:none"></div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Userid, "Userid", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.DropDownListFor(model => model.Userid, new SelectList(ViewBag.User, "value", "text"), new { @class = "form-control",  required = "required" })
+                            @Html.ValidationMessageFor(model => model.Userid, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Teamid, "Teamid", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.DropDownListFor(model => model.Teamid, new SelectList(ViewBag.Team, "value", "text"),  new { @class = "form-control",required = "required" } )
+                            @Html.ValidationMessageFor(model => model.Teamid, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Groundid, "Groundid", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.DropDownListFor(model => model.Groundid, new SelectList(ViewBag.Ground, "value", "text"),new { @class = "form-control", required = "required" } )
+                            @Html.ValidationMessageFor(model => model.Groundid, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Date, "Date", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @class = "form-control" ,type="datetime-local", placeholder = "Enter Detail here ...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Date, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Detail, "Detail", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Detail here ...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <button type="button" class="btn waves-effect waves-light btn-rounded btn btn-warning btn-sm float-left" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn waves-effect waves-light btn-rounded btn btn-primary btn-sm float-right">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script>
+
+</script>
+

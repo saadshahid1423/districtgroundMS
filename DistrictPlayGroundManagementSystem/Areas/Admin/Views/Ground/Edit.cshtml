@@ -1,0 +1,138 @@
+﻿@model DistrictPlayGroundManagementSystem.Ground
+
+@using (Html.BeginForm("Edit", "Ground", FormMethod.Post, new { enctype = "multipart/form-data", id = "Areaform", area = "Admin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <h4>Ground</h4>
+                        <small>Update Ground Here</small>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger text-center" id="divMessage" style="display:none"></div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-md-6 col-xs-12">
+                    @Html.HiddenFor(model => model.Id)
+                    <div class="form-group">
+
+                        <div class="change-avatar">
+                            <div class="profile-img">
+                                <img src="@ViewBag.GroundImage" id="image" alt="Ground Image">
+                            </div>
+                            <div class="upload-img">
+                                <div class="change-photo-btn">
+                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                    <input type="file" name="Picture" id="Imageinput" class="upload">
+                                </div>
+                                <small class="form-text text-muted">Allowed JPG, GIF or PNG. Max size of 2MB</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Name, "Ground Name", htmlAttributes: new { @class = "control-label" })
+                            <div class="input-group mb-3">
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Ground Name here ...", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-home"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.GroundType, "GroundType", htmlAttributes: new { @class = "control-label" })
+                            <div class="input-group mb-2">
+                                @Html.DropDownListFor(model => model.GroundTypeID, new SelectList(ViewBag.GroundType, "value", "text"), new { @class = "form-control", placeholder = "Enter Email here ...", required = "required"  })
+                                @Html.ValidationMessageFor(model => model.GroundType, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-server"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Price, "Price", htmlAttributes: new { @class = "control-label" })
+                            <div class="input-group mb-2">
+                                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Price here ...", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-server"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Detail, "Detail", htmlAttributes: new { @class = "control-label" })
+                            <div class="input-group mb-2">
+                                @Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Detail here ...", required = "required" } })
+                                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                        <i class="fa fa-server"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                <div class="row">
+                    <div class="col-md-12  col-xs-12">
+                        <button type="button" class="btn waves-effect waves-light btn-rounded btn btn-warning btn-sm float-left" data-dismiss="modal">
+                            Close
+                        </button>
+                        <button type="submit" class="btn waves-effect waves-light btn-rounded btn btn-primary btn-sm float-right">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        }
+        
+<script>
+     function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+
+    $("#Imageinput").change(function () {
+        readURL(this);
+    });
+</script>
+

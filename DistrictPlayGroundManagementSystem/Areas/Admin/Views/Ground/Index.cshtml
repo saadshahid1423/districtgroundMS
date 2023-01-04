@@ -1,0 +1,187 @@
+﻿@model IEnumerable<DistrictPlayGroundManagementSystem.Ground>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+    <style>
+        .change-photo-btn {
+            background-color: #1e88e5;
+            border-radius: 50px;
+            color: #fff;
+            cursor: pointer;
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin: 0 auto;
+            padding: 10px 15px;
+            position: relative;
+            transition: .3s;
+            text-align: center;
+            width: 220px;
+        }
+
+            .change-photo-btn input.upload {
+                bottom: 0;
+                cursor: pointer;
+                filter: alpha(opacity=0);
+                left: 0;
+                margin: 0;
+                opacity: 0;
+                padding: 0;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 220px;
+            }
+    </style>
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="content-header row">
+                <div class="content-header-left col-md-6 col-xs-12 mb-1">
+                    <h3 class="content-header-title"> Ground List</h3>
+                </div>
+
+                <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-xs-12">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <button type="button" class="btn waves-effect waves-light btn-rounded  btn btn-success btn-sm" onclick="OpenModelPopup(this)" data="/Admin/Ground/Create/">Create</button>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-responsive pt-3">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayName("GroundType1")
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Picture)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Detail)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Price)
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Action
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GroundType.GroundType1)
+                                </td>
+                                <td>
+                                   <img src="@item.Picture"  style="border-radius:0px;width:auto;height:70px"/>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Detail)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Price)
+                                </td>
+                                @if (item.IsActive == true)
+                                {
+                                    <td>
+                                        <a class="btn btn-danger btn-rounded btn-fw" href="/Admin/Ground/ActivateDeactivate?id=@item.Id">Deactivate</a>
+
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        <a class="btn btn-primary btn-rounded btn-fw" href="/Admin/Ground/ActivateDeactivate?id=@item.Id">Activate</a>
+
+                                    </td>
+                                }
+                                <td>
+                                    <button type="button" class="btn waves-effect waves-light btn-rounded  btn btn-primary " onclick="OpenModelPopup(this)" data="/Admin/Ground/Edit?Id=@item.Id">Edit</button>
+                                    <a class="btn btn-danger btn-rounded btn-fw" id="deletebtn" onclick="JSalert()" href="/Admin/Ground/Delete?id=@item.Id">Delete</a>
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div id='myModalContent'>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (ViewBag.Message != null && ViewBag.Message != "")
+{
+    <script>
+             toastr.success('@ViewBag.Message');
+    </script>
+}
+@if (ViewBag.Error != null && ViewBag.Error != "")
+{
+    <script>
+               toastr.error('@ViewBag.Error');
+    </script>
+}
+
+
+<script>
+        function JSalert() {
+        event.preventDefault();  
+        Swal.fire({
+            title: 'Are you sure you want to delete this Ground?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Delete`,
+            denyButtonText: `Don't Delete`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch($('#deletebtn').prop('href')).then(() => {
+ 
+                    Swal.fire(
+                        'Deleted!',
+                        'Your Ground has been deleted.',
+                        'success'
+                    ).then(function() {
+    location.reload()
+});
+                    
+                })
+            }
+            else {
+                return false
+            }
+        })
+           
+}
+</script>
+
+
+
+
+

@@ -1,0 +1,99 @@
+﻿@model DistrictPlayGroundManagementSystem.User
+
+@using (Html.BeginForm("Edit", "Users", FormMethod.Post, new { enctype = "multipart/form-data", id = "Areaform", area = "Admin" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card">
+        <div class="card-header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <h4>User</h4>
+                        <small>Add User Here</small>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger text-center" id="divMessage" style="display:none"></div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                @Html.HiddenFor(model=>model.Id)
+                <div class="col-md-6 col-xs-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, "Name", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-3">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Name here ...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-home"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Email here ...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, "Password", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Password here ...", required = "required", type = "password   " } })
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Contact, "Contact No", htmlAttributes: new { @class = "control-label" })
+                        <div class="input-group mb-2">
+                            @Html.EditorFor(model => model.Contact, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter Contact here ...", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.Contact, "", new { @class = "text-danger" })<div class="input-group-append"></div>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-server"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+            <div class="row">
+                <div class="col-md-12  col-xs-12">
+                    <button type="button" class="btn waves-effect waves-light btn-rounded btn btn-warning btn-sm float-left" data-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn waves-effect waves-light btn-rounded btn btn-primary btn-sm float-right">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

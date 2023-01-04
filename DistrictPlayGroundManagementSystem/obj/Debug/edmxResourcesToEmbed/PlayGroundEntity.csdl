@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DistrictPlayGroundManagmentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Bookingid" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <Property Name="concession" Type="Int32" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Booking" Relationship="DistrictPlayGroundManagmentModel.FK_Account_Booking" FromRole="Account" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Teams" Relationship="DistrictPlayGroundManagmentModel.FK_Team_Admin" FromRole="Admin" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Groundid" Type="Int32" />
+    <Property Name="Userid" Type="Int32" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Ground" Relationship="DistrictPlayGroundManagmentModel.FK_Feedback_Ground" FromRole="Feedback" ToRole="Ground" />
+    <NavigationProperty Name="User" Relationship="DistrictPlayGroundManagmentModel.FK_Feedback_User" FromRole="Feedback" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Ground">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroundTypeID" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Feedbacks" Relationship="DistrictPlayGroundManagmentModel.FK_Feedback_Ground" FromRole="Ground" ToRole="Feedback" />
+    <NavigationProperty Name="Ground1" Relationship="DistrictPlayGroundManagmentModel.FK_Ground_Ground" FromRole="Ground" ToRole="Ground1" />
+    <NavigationProperty Name="Ground2" Relationship="DistrictPlayGroundManagmentModel.FK_Ground_Ground" FromRole="Ground1" ToRole="Ground" />
+    <NavigationProperty Name="GroundType" Relationship="DistrictPlayGroundManagmentModel.FK_Ground_GroundType" FromRole="Ground" ToRole="GroundType" />
+    <NavigationProperty Name="Bookings" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_Ground" FromRole="Ground" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="GroundType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroundType1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Grounds" Relationship="DistrictPlayGroundManagmentModel.FK_Ground_GroundType" FromRole="GroundType" ToRole="Ground" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Team">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminId" Type="Int32" Nullable="false" />
+    <Property Name="TeamTypeId" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="President" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Admin" Relationship="DistrictPlayGroundManagmentModel.FK_Team_Admin" FromRole="Team" ToRole="Admin" />
+    <NavigationProperty Name="TeamType" Relationship="DistrictPlayGroundManagmentModel.FK_Team_TeamType" FromRole="Team" ToRole="TeamType" />
+    <NavigationProperty Name="Bookings" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_Team" FromRole="Team" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="TeamType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TeamType1" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Teams" Relationship="DistrictPlayGroundManagmentModel.FK_Team_TeamType" FromRole="TeamType" ToRole="Team" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <NavigationProperty Name="Feedbacks" Relationship="DistrictPlayGroundManagmentModel.FK_Feedback_User" FromRole="User" ToRole="Feedback" />
+    <NavigationProperty Name="Bookings" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_User" FromRole="User" ToRole="Booking" />
+  </EntityType>
+  <EntityContainer Name="DistrictPlayGroundManagmentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+    <EntitySet Name="Grounds" EntityType="Self.Ground" />
+    <EntitySet Name="GroundTypes" EntityType="Self.GroundType" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Teams" EntityType="Self.Team" />
+    <EntitySet Name="TeamTypes" EntityType="Self.TeamType" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Team_Admin" Association="DistrictPlayGroundManagmentModel.FK_Team_Admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_Ground" Association="DistrictPlayGroundManagmentModel.FK_Feedback_Ground">
+      <End Role="Ground" EntitySet="Grounds" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Feedback_User" Association="DistrictPlayGroundManagmentModel.FK_Feedback_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Feedback" EntitySet="Feedbacks" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ground_Ground" Association="DistrictPlayGroundManagmentModel.FK_Ground_Ground">
+      <End Role="Ground" EntitySet="Grounds" />
+      <End Role="Ground1" EntitySet="Grounds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ground_GroundType" Association="DistrictPlayGroundManagmentModel.FK_Ground_GroundType">
+      <End Role="GroundType" EntitySet="GroundTypes" />
+      <End Role="Ground" EntitySet="Grounds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Team_TeamType" Association="DistrictPlayGroundManagmentModel.FK_Team_TeamType">
+      <End Role="TeamType" EntitySet="TeamTypes" />
+      <End Role="Team" EntitySet="Teams" />
+    </AssociationSet>
+    <EntitySet Name="Bookings" EntityType="DistrictPlayGroundManagmentModel.Booking" />
+    <AssociationSet Name="FK_Account_Booking" Association="DistrictPlayGroundManagmentModel.FK_Account_Booking">
+      <End Role="Booking" EntitySet="Bookings" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Ground" Association="DistrictPlayGroundManagmentModel.FK_Booking_Ground">
+      <End Role="Ground" EntitySet="Grounds" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Team" Association="DistrictPlayGroundManagmentModel.FK_Booking_Team">
+      <End Role="Team" EntitySet="Teams" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_User" Association="DistrictPlayGroundManagmentModel.FK_Booking_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Team_Admin">
+    <End Type="DistrictPlayGroundManagmentModel.Admin" Role="Admin" Multiplicity="1" />
+    <End Type="DistrictPlayGroundManagmentModel.Team" Role="Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="AdminId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_Ground">
+    <End Type="DistrictPlayGroundManagmentModel.Ground" Role="Ground" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Feedback" Role="Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ground">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Groundid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Feedback_User">
+    <End Type="DistrictPlayGroundManagmentModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Feedback" Role="Feedback" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Feedback">
+        <PropertyRef Name="Userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ground_Ground">
+    <End Type="DistrictPlayGroundManagmentModel.Ground" Role="Ground" Multiplicity="1" />
+    <End Type="DistrictPlayGroundManagmentModel.Ground" Role="Ground1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Ground">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ground1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ground_GroundType">
+    <End Type="DistrictPlayGroundManagmentModel.GroundType" Role="GroundType" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Ground" Role="Ground" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroundType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Ground">
+        <PropertyRef Name="GroundTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Team_TeamType">
+    <End Type="DistrictPlayGroundManagmentModel.TeamType" Role="TeamType" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Team" Role="Team" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TeamType">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Team">
+        <PropertyRef Name="TeamTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Userid" Type="Int32" />
+    <Property Name="Teamid" Type="Int32" />
+    <Property Name="Groundid" Type="Int32" />
+    <Property Name="Date" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IsAuthorized" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Accounts" Relationship="DistrictPlayGroundManagmentModel.FK_Account_Booking" FromRole="Booking" ToRole="Account" />
+    <NavigationProperty Name="Ground" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_Ground" FromRole="Booking" ToRole="Ground" />
+    <NavigationProperty Name="Team" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_Team" FromRole="Booking" ToRole="Team" />
+    <NavigationProperty Name="User" Relationship="DistrictPlayGroundManagmentModel.FK_Booking_User" FromRole="Booking" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Account_Booking">
+    <End Type="DistrictPlayGroundManagmentModel.Booking" Role="Booking" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Booking">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Bookingid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Ground">
+    <End Type="DistrictPlayGroundManagmentModel.Ground" Role="Ground" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ground">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Groundid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Team">
+    <End Type="DistrictPlayGroundManagmentModel.Team" Role="Team" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Team">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Teamid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_User">
+    <End Type="DistrictPlayGroundManagmentModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="DistrictPlayGroundManagmentModel.Booking" Role="Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="Userid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

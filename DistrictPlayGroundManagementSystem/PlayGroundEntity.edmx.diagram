@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21922657154d4c43b547f47765507397" Name="Diagram1">
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Account" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Admin" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Feedback" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Ground" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.GroundType" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.sysdiagram" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Team" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.TeamType" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.User" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Team_Admin" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Feedback_Ground" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Feedback_User" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Ground_Ground" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Ground_GroundType" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Team_TeamType" />
+        <EntityTypeShape EntityType="DistrictPlayGroundManagmentModel.Booking" Width="1.5" PointX="9" PointY="3.625" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Account_Booking" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Booking_Ground" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Booking_Team" />
+        <AssociationConnector Association="DistrictPlayGroundManagmentModel.FK_Booking_User" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

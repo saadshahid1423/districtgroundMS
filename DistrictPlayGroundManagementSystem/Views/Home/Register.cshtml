@@ -1,0 +1,99 @@
+﻿@model DistrictPlayGroundManagementSystem.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Student Login</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="~/assets/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="~/assets/vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/assets/images/favicon.png">
+    <script>
+       
+      
+    </script>
+    
+</head>
+
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper">
+            <div class="content-wrapper d-flex align-items-center auth px-0">
+                <div class="row w-100 mx-0">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+
+                            <h4>Hello!</h4>
+                            <h6 class="font-weight-light">Register to continue.</h6>
+                            @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+
+
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Name, new { @type = "text", @class = "form-control form-control-lg border-left-0", id = "Name", placeholder = "Your Name" ,required = "required" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Email, new { @type = "Email", @class = "form-control form-control-lg border-left-0", id = "Email", placeholder = "Your Email",required = "required" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Password, new { @type = "password", @class = "form-control form-control-lg border-left-0", id = "Password", placeholder = "Your Password",required = "required" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.Contact, new { @type = "text", @class = "form-control form-control-lg border-left-0", id = "Contact", placeholder = "Your ContactNo",required = "required" })
+
+                                </div>
+                                <div style="color:red"> @ViewBag.Message </div>
+                                <div class="mt-3">
+                                    <button type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">Register</button>
+
+                                </div>
+                                <br />
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="~/assets/vendors/base/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+    <script src="~/assets/js/off-canvas.js"></script>
+    <script src="~/assets/js/hoverable-collapse.js"></script>
+    <script src="~/assets/js/template.js"></script>
+    <script src="~/assets/js/todolist.js"></script>
+    <!-- endinject -->
+
+
+
+</body>
+</html>
